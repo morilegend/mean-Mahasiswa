@@ -1,0 +1,40 @@
+<div class="overlay" (click)="close($event)">
+  <div class="dialog">
+    <form>
+      
+      <h1>Tambah Mahasiswa</h1>
+      
+      <label for="npm">NPM</label>
+      <input type="text" class="form-control" [(ngModel)]="npm" [ngModelOptions]="{standalone: true}" id="npm" placeholder="Masukkan Npm"> 
+
+      <label for="nama">Nama Mahasiswa</label>
+      <input type="text" class="form-control" [(ngModel)]="nama" [ngModelOptions]="{standalone: true}" id="nama" placeholder="Masukkan Nama Mahasiswa">
+
+      <label for="notelp">No Telpon</label>
+      <input type="text" class="form-control" [(ngModel)]="notelp" [ngModelOptions]="{standalone: true}" id="notelp" placeholder="Masukkan No Telpon">
+
+      <label for="usia">Usia</label>
+      <input type="text" class="form-control" [(ngModel)]="usia" [ngModelOptions]="{standalone: true}" id="usia" placeholder="Masukkan Usia">
+
+      <label for="jurusan">Jurusan</label>
+      <input type="text" class="form-control" [(ngModel)]="jurusan" [ngModelOptions]="{standalone: true}" id="jurusan" placeholder="Masukkan Jurusan">
+
+      <label for="alamat">Alamat</label>
+      <input type="text" class="form-control" [(ngModel)]="alamat" [ngModelOptions]="{standalone: true}" id="alamat" placeholder="Masukkan Alamat">
+
+      <div class="button-container">
+        <!-- Button Simpan Mahasiswa -->
+        <button
+          class="middle none center mr-4 rounded-lg bg-green-500 py-3 px-6 font-sans text-xs font-bold uppercase text-white shadow-md shadow-green-500/20 transition-all hover:shadow-lg hover:shadow-green-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+          data-ripple-light="true"
+          type="submit" (click)="simpanMahasiswa()" >Simpan</button>
+
+        <!-- Button Batal -->
+        <button
+          class="middle none center mr-4 rounded-lg bg-red-500 py-3 px-6 font-sans text-xs font-bold uppercase text-white shadow-md shadow-green-500/20 transition-all hover:shadow-lg hover:shadow-green-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+          data-ripple-light="true"
+          type="submit" (click)="batal()">Batal</button>
+      </div>
+    </form>
+  </div>
+</div>

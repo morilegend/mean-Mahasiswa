@@ -1,0 +1,43 @@
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.dialog {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;  
+    width: 600px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Tambahkan bayangan untuk efek mendalam */
+}
+
+.button-container {
+    display: flex;
+    justify-content: flex-end; /* Geser tombol ke kanan */
+    margin-top: 16px;
+}
+
+/* Gaya untuk tombol Batal */
+.button-container button {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.button-container button:hover {
+    background-color: #e74c3c; /* Warna latar merah saat dihover */
+    color: white;
+}
+
+p{
+    font-size: 2ch;
+}

@@ -1,0 +1,22 @@
+<div class="overlay" (click)="close($event)">
+  <div class="dialog">
+    
+    <h1> Detail Mahasiswa</h1>
+    <p><strong>NPM:</strong> {{ data.mahasiswa.npm }}</p>
+    <p><strong>Nama:</strong> {{ data.mahasiswa.nama }}</p>
+    <p><strong>Telpon:</strong> {{ data.mahasiswa.notelp }}</p>
+    <p><strong>Usia:</strong> {{ data.mahasiswa.usia }}</p>
+    <p><strong>Alamat:</strong> {{ data.mahasiswa.alamat }}</p>
+    <p><strong>Jurusan:</strong> {{ data.mahasiswa.jurusan }}</p>
+    
+      <div class="button-container">
+        <!-- Button Batal -->
+        <button
+          class="middle none center mr-4 rounded-lg bg-red-500 py-3 px-6 font-sans text-xs font-bold uppercase text-white shadow-md shadow-green-500/20 transition-all hover:shadow-lg hover:shadow-green-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+          data-ripple-light="true"
+          type="submit" (click)="batal()">close
+        </button>
+      </div>
+
+  </div>
+</div>
