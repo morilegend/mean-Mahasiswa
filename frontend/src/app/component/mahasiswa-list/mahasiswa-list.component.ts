@@ -34,7 +34,20 @@ export class MahasiswaListComponent {
     );
   }
 
-  deleteMahasiswa(id: string) {
+  deleteMahasiswa(id: string, mahasiswa: any) {
+    let bodyData = {
+      "npm": mahasiswa.npm,
+      "nama": mahasiswa.nama,
+      "tanggal": new Date,
+      "status": "Delete"
+      
+    };
+
+    // Kirim data ke server
+
+    this.dataService.insertHistory(bodyData).subscribe((resultData: any) => {
+      console.log(resultData);
+    })
     this.dataService.deleteMahasiswa(id).subscribe(
       () => {
         this.dataService.getMahasiswaList();
@@ -54,4 +67,5 @@ export class MahasiswaListComponent {
       }
     });
   }
+
 }

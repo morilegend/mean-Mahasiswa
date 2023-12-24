@@ -11,13 +11,8 @@ import { MatDialog } from '@angular/material/dialog';
 export class DashboardComponent {
   constructor(public dialog: MatDialog) {}
 
-
-  // Modal Dialog Tambah Mahasiswa
   TambahMahasiswaDialog(): void {
     this.dialog.open(TambahMahasiswaComponent, {
     });
   }
-
-
-
 }

@@ -17,9 +17,11 @@ import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatDialogModule } from '@angular/material/dialog';
 
+
 //Prov
 import { DataService } from './data.service';
 import { EditMahasiswaComponent } from './mat/edit-mahasiswa/edit-mahasiswa.component';
+
 
 
 
@@ -43,7 +45,8 @@ import { EditMahasiswaComponent } from './mat/edit-mahasiswa/edit-mahasiswa.comp
     ReactiveFormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    MatDialogModule
+    MatDialogModule,
+
   ],
   
   providers: [],

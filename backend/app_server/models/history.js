@@ -15,7 +15,7 @@ let historySchema = new mongoose.Schema({
   },
   status: {
     type: String,
-    enum: ['Update', 'Dihapus'],
+    enum: ['Update', 'Delete'],
     required: false,
   },
 });

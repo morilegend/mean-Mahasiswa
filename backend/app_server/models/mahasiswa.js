@@ -1,5 +1,4 @@
 let mongoose = require("mongoose");
-const historySchema = require('./history');
 
 let schemaMahasiswa = new mongoose.Schema({
     npm: {
@@ -25,8 +24,7 @@ let schemaMahasiswa = new mongoose.Schema({
     jurusan: {
         type: String,
         required: true
-    },
-
+    }
 });
 
 mongoose.model('Mahasiswa', schemaMahasiswa);

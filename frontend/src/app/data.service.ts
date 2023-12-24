@@ -7,28 +7,27 @@ import { Router } from '@angular/router';
   providedIn: 'root'
 })
 export class DataService {
-  private apiUrlMahasiswa = 'http://localhost:3000/mahasiswa';
+  private apiUrl = 'http://localhost:3000/mahasiswa';
   private apiUrlHistory = 'http://localhost:3000/history';
 
   constructor(private http: HttpClient, private router : Router) {}
 
-
   //Mahasiswa
   getMahasiswaList(){
-    return this.http.get<any>(this.apiUrlMahasiswa);
+    return this.http.get<any>(this.apiUrl);
   }
 
   deleteMahasiswa(id: string){
-    return this.http.delete(`${this.apiUrlMahasiswa}/delete/${id}`);
+    return this.http.delete(`${this.apiUrl}/delete/${id}`);
   }
 
   editMahasiswa(editedMahasiswa: any){
-      const url = `${this.apiUrlMahasiswa}/update/${editedMahasiswa._id}`;
-      return this.http.put(url, editedMahasiswa);
+    const url = `${this.apiUrl}/update/${editedMahasiswa._id}`;
+    return this.http.put(url, editedMahasiswa);
   }
   
   insertMahasiswa(insertMahasiswa: any){
-    const url = `${this.apiUrlMahasiswa}/insert`;
+    const url = `${this.apiUrl}/insert`;
     return this.http.post(url, insertMahasiswa);
   }
 

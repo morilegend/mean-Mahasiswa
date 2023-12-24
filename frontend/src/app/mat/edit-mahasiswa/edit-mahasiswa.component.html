@@ -1,6 +1,6 @@
 <div class="overlay">
   <div class="dialog" >
-    <form (ngSubmit)="updateMahasiswa()">
+    <form (ngSubmit)="updateMahasiswa($event)">
 
       <h1>Edit Mahasiswa</h1>
 
@@ -17,7 +17,7 @@
       <input type="text" class="form-control" [(ngModel)]="editedMahasiswa.usia" [ngModelOptions]="{standalone: true}" id="usia" placeholder="Masukkan Usia">
 
       <label for="jurusan">Jurusan</label>
-      <input type="text" class="form-control" [(ngModel)]="editedMahasiswa.jurusan" [ngModelOptions]="{standalone: true}" id="jurusan" placeholder="Masukkan Jurusan">
+      <input type="text" class="form-control" [(ngModel)]="editedMahasiswa.jurusan" [ngModelOptions]="{standalone: true}"  id="jurusan" placeholder="Masukkan Jurusan">
 
       <label for="alamat">Alamat</label>
       <input type="text" class="form-control" [(ngModel)]="editedMahasiswa.alamat" [ngModelOptions]="{standalone: true}" id="alamat" placeholder="Masukkan Alamat">
@@ -25,7 +25,7 @@
       <div class="button-container">
         <!-- Button Simpan Mahasiswa -->
         <button class="middle none center mr-4 rounded-lg bg-green-500 py-3 px-6 font-sans text-xs font-bold uppercase text-white shadow-md shadow-green-500/20 transition-all hover:shadow-lg hover:shadow-green-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
-          data-ripple-light="true" type="submit" >Simpan</button>
+          data-ripple-light="true" type="submit">Simpan</button>
 
         <!-- Button Batal -->
         <button class="middle none center mr-4 rounded-lg bg-red-500 py-3 px-6 font-sans text-xs font-bold uppercase text-white shadow-md shadow-green-500/20 transition-all hover:shadow-lg hover:shadow-green-500/40 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"

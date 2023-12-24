@@ -31,7 +31,7 @@ export class TambahMahasiswaComponent {
       "alamat" : this.alamat,
     };
 
-    // Lakukan Pengecekan Data
+    //Pengeceka Form
     if (this.npm == "" && this.nama == "" && this.notelp == "" && this.usia == "" && this.jurusan == ""){
       alert("Silakhan Mengisi Form")
       return;
@@ -44,10 +44,11 @@ export class TambahMahasiswaComponent {
       alert("Nama Tidak Boleh Kosong")
       return;
     }
-    else if(this.notelp == null){
+    else if(this.notelp == ""){
       alert("No Telp Tidak Boleh Kosong")
       return;
     }
+
     else if(this.usia == ""){
       alert("Usia tidak boleh kosong ")
       return;
@@ -59,7 +60,8 @@ export class TambahMahasiswaComponent {
     else{}
 
     // Kirim data ke server
-    this.dataService.insertMahasiswa(bodyData).subscribe(() => {
+    this.dataService.insertMahasiswa(bodyData).subscribe((resultData: any) => {
+      console.log(resultData);
       alert("Mahasiswa berhasil disimpan");
       this.npm = "";
       this.nama = "";
@@ -67,13 +69,14 @@ export class TambahMahasiswaComponent {
       this.usia = "";
       this.jurusan = "";
       this.alamat = "";
+
       // Saat Data berhasil disimpan refresh website
       window.location.reload();
     },
 
     (error) => {
       console.error(error);
-      alert("Gagal menyimpan mahasiswa");
+      alert("No Telpon Hanya Boleh Angka");
     }
   );
 }

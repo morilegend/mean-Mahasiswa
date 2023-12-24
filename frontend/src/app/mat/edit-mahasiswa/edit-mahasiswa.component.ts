@@ -16,10 +16,9 @@ export class EditMahasiswaComponent {
     private dataService: DataService
   ) {
     this.editedMahasiswa = { ...data.mahasiswa };
-
   }
 
-  updateMahasiswa() {
+  updateMahasiswa(event: Event) {
     // Melakukan pengecekan sebelum dikirim ke server
     if (this.editedMahasiswa.npm == ""){
       alert("Masukkan Npm")
@@ -41,16 +40,25 @@ export class EditMahasiswaComponent {
       alert("Masukkan Jurusan")
       return;
     }
-    else if (this.editedMahasiswa.alamat == ""){
-      alert("Masukkan Alamat")
-      return;
-    }
     else {
 
-    }    
-    
-    Object.assign(this.data.mahasiswa);
-    // Kirim permintaan pembaruan ke server
+    } 
+
+    //Kirim Data Edit
+    let bodyData = {
+      "npm": this.editedMahasiswa.npm,
+      "nama": this.editedMahasiswa.nama,
+      "tanggal": new Date,
+      "status": "Update"
+    };
+    // Kirim data ke server History
+    this.dataService.insertHistory(bodyData).subscribe((resultData: any) => {
+      console.log(resultData);
+    })
+
+    // Perbarui nilai properti objek data.mahasiswa
+    Object.assign(this.data.mahasiswa, this.editedMahasiswa);
+    // Kirim  pembaruan ke mongo
     this.dataService.editMahasiswa(this.data.mahasiswa).subscribe(
       (resultData: any) => {
         console.log(resultData);
@@ -58,7 +66,7 @@ export class EditMahasiswaComponent {
         this.dialogRef.close(); 
       },
       (error) => {
-        console.error('Error updating Mahasiswa', error);
+        console.error('Gagal update Mahasiswa', error);
 
       }
     );
