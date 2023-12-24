@@ -10,12 +10,11 @@ let historySchema = new mongoose.Schema({
     required: false,
   },
   tanggal: {
-    type: Date,
-    default: Date.now,
+    type: String,
   },
   status: {
     type: String,
-    enum: ['Update', 'Delete'],
+    enum: ['Update', 'Delete' , 'Insert'],
     required: false,
   },
 });

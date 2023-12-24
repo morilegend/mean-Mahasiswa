@@ -17,8 +17,14 @@ export class EditMahasiswaComponent {
   ) {
     this.editedMahasiswa = { ...data.mahasiswa };
   }
+  
 
   updateMahasiswa(event: Event) {
+
+    let tanggal = new Date
+    let date = tanggal.getDate()+"-"+ tanggal.getMonth()+"-"+ tanggal.getFullYear()
+    let time = tanggal.getHours()+":"+ tanggal.getMinutes()+":"+ tanggal.getSeconds()
+
     // Melakukan pengecekan sebelum dikirim ke server
     if (this.editedMahasiswa.npm == ""){
       alert("Masukkan Npm")
@@ -48,7 +54,9 @@ export class EditMahasiswaComponent {
     let bodyData = {
       "npm": this.editedMahasiswa.npm,
       "nama": this.editedMahasiswa.nama,
-      "tanggal": new Date,
+
+      // Ganti Tanggal Menjadi Format dd/mm/yy
+      "tanggal":`${date}:${time}`,
       "status": "Update"
     };
     // Kirim data ke server History

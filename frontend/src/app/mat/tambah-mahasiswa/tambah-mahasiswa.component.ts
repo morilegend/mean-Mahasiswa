@@ -3,6 +3,7 @@ import { MatDialogRef } from '@angular/material/dialog';
 import { HttpClient } from '@angular/common/http';
 import { DataService } from 'src/app/data.service';
 
+
 @Component({
   selector: 'app-tambah-mahasiswa',
   templateUrl: './tambah-mahasiswa.component.html',
@@ -10,7 +11,7 @@ import { DataService } from 'src/app/data.service';
 })
 
 export class TambahMahasiswaComponent {
-
+  
   // Deklarasi
   npm: string = "";
   nama: string = "";
@@ -21,7 +22,13 @@ export class TambahMahasiswaComponent {
 
   constructor(public dialogRef: MatDialogRef<TambahMahasiswaComponent>, private http: HttpClient,private dataService : DataService) { }
   simpanMahasiswa() {
+
+    let tanggal = new Date
+    let date = tanggal.getDate()+"-"+ tanggal.getMonth()+"-"+ tanggal.getFullYear()
+    let time = tanggal.getHours()+":"+ tanggal.getMinutes()+":"+ tanggal.getSeconds()
+
     // Data yang akan dikirim
+
     let bodyData = {
       "npm": this.npm,
       "nama": this.nama,
@@ -30,6 +37,16 @@ export class TambahMahasiswaComponent {
       "jurusan": this.jurusan,
       "alamat" : this.alamat,
     };
+
+    let bodyData2 = {
+      "npm": bodyData.npm,
+      "nama": bodyData.nama,
+      // Ganti Tanggal Menjadi Format dd/mm/yy
+      "tanggal": `${date}:${time}`,
+      "status": "Insert"
+    };
+
+
 
     //Pengeceka Form
     if (this.npm == "" && this.nama == "" && this.notelp == "" && this.usia == "" && this.jurusan == ""){
@@ -70,6 +87,9 @@ export class TambahMahasiswaComponent {
       this.jurusan = "";
       this.alamat = "";
 
+    this.dataService.insertHistory(bodyData2).subscribe((resultData2: any) => {
+      console.log(resultData2);
+    })
       // Saat Data berhasil disimpan refresh website
       window.location.reload();
     },

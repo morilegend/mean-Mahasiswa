@@ -13,7 +13,10 @@ import { EditMahasiswaComponent } from 'src/app/mat/edit-mahasiswa/edit-mahasisw
 export class MahasiswaListComponent {
   mahasiswaList: any[] = [];
 
+  
+
   constructor(public dialog: MatDialog,private dataService:DataService) {}
+
 
   TambahMahasiswaDialog() {
     this.dialog.open(TambahMahasiswaComponent, {
@@ -34,11 +37,19 @@ export class MahasiswaListComponent {
     );
   }
 
+
+  
   deleteMahasiswa(id: string, mahasiswa: any) {
+
+    let tanggal = new Date
+    let date = tanggal.getDate()+"-"+ tanggal.getMonth()+"-"+ tanggal.getFullYear()
+    let time = tanggal.getHours()+":"+ tanggal.getMinutes()+":"+ tanggal.getSeconds()
+
     let bodyData = {
       "npm": mahasiswa.npm,
       "nama": mahasiswa.nama,
-      "tanggal": new Date,
+      // Ganti Tanggal Menjadi Format dd/mm/yy
+      "tanggal": `${date}:${time}`,
       "status": "Delete"
       
     };
@@ -51,7 +62,10 @@ export class MahasiswaListComponent {
     this.dataService.deleteMahasiswa(id).subscribe(
       () => {
         this.dataService.getMahasiswaList();
+        window.location.reload();
       }
+    
+      
     );
   }
 

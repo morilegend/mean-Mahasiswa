@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>>
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard</title>
@@ -11,11 +11,11 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="dashboard.component.css">
 
-<!-- Navigation -->
+    <!-- Navigation -->
 </head>
-<body class="bg-gray-100 font-family-karla flex">
+<body class="bg-gray-100 font-family-karla flex flex-col sm:flex-row">
 
-    <aside class="relative bg-sidebar h-screen w-64 hidden sm:block shadow-xl">
+    <aside class="relative bg-sidebar sm:h-screen w-full sm:w-64 shadow-xl">
         <div class="p-6">
             <a href="dashboard" class="text-white text-3xl font-semibold uppercase hover:text-gray-300">Dashboard</a>
 
@@ -36,39 +36,35 @@
     </aside>
 
     <!-- Information -->
-    <div class="w-2/3 mx-auto scroll-">
-        <div class="bg-white">
-        <table class="text-left w-full border-collapse">
-            <thead>
-            <tr>
-                <th class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">NPM</th>
-                <th class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">Nama</th>
-                <th class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">Tanggal</th>
-                <th class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">Status</th>
-            </tr>
-            </thead>
+    <div class="w-full scroll-">
+        <div class="bg-white overflow-x-auto">
+            <table class="text-left w-full border-collapse">
+                <thead>
+                    <tr>
+                        <th class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">NPM</th>
+                        <th class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">Nama</th>
+                        <th class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">Tanggal</th>
+                        <th class="py-4 px-6 bg-grey-lightest font-bold uppercase text-sm text-grey-dark border-b border-grey-light">Status</th>
+                    </tr>
+                </thead>
 
-            <tbody >
+                <tbody>
+                    <ng-container *ngFor="let history of historyList">
+                        <tr class="hover:bg-grey-lighter">
+                            <td class="py-4 px-6 border-b border-grey-light">{{ history.npm }}</td>
+                            <td class="py-4 px-6 border-b border-grey-light">{{ history.nama }}</td>
+                            <td class="py-4 px-6 border-b border-grey-light">{{ history.tanggal }}</td>
+                            <td class="py-4 px-6 border-b font-semibold leading-tight" 
+                            [ngClass]="{'border-b text-green-700': history.status === 'Update', 
+                            'text-red-700': history.status === 'Delete', 
+                            'text-blue-700': history.status === 'Insert'}">{{ history.status }}</td>
+                        </tr>
+                    </ng-container>
+                </tbody>
 
-                <tr class="hover:bg-grey-lighter">
-                    <td class="py-4 px-6 border-b border-grey-light">Npm</td>
-                    <td class="py-4 px-6 border-b border-grey-light">asd</td>
-                    <td class="py-4 px-6 border-b border-grey-light">2013</td>
-                    <td class="px-2 py-1 font-semibold leading-tight text-green-700"> Updated </td>
-                    <td class="py-4 px-6 border-b border-grey-light">
-                </tr>
-
-                <tr class="hover:bg-grey-lighter">
-                    <td class="py-4 px-6 border-b border-grey-light">Npm</td>
-                    <td class="py-4 px-6 border-b border-grey-light">asd</td>
-                    <td class="py-4 px-6 border-b border-grey-light">2014</td>
-                    <td class="px-2 py-1 font-semibold leading-tight text-red-700"> Removed </td>
-                    <td class="py-4 px-6 border-b border-grey-light">
-                </tr>
-
-            </tbody>
-        </table>
+            </table>
         </div>
     </div>
 
 </body>
+</html>

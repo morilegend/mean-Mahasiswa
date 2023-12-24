@@ -21,6 +21,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 //Prov
 import { DataService } from './data.service';
 import { EditMahasiswaComponent } from './mat/edit-mahasiswa/edit-mahasiswa.component';
+import { DatePipe } from '@angular/common';
 
 
 
@@ -49,7 +50,7 @@ import { EditMahasiswaComponent } from './mat/edit-mahasiswa/edit-mahasiswa.comp
 
   ],
   
-  providers: [],
+  providers: [DatePipe],
   bootstrap: [AppComponent]
 })
 
